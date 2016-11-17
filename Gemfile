@@ -8,7 +8,7 @@ gem 'coffee-rails', '4.2.1'
 gem 'jquery-rails', '4.1.1'
 gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.4.1'
-gem 'pry-rails'
+gem 'bcrypt'
 gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
@@ -16,7 +16,7 @@ gem 'bootstrap-sass'
 
 group :development, :test do
   gem 'sqlite3', '1.3.11'
-  gem 'byebug',  '9.0.0', platform: :mri
+  gem 'pry-rails'
 end
 
 group :development do
