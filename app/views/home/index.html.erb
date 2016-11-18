@@ -1,12 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <%= gravatar_for @user %>
-      <%= @user.name %>
-      <p><%= @user.entries.count %> entries</p>
-      <p><%= link_to "#{@user.following.count} following", following_user_path(@user) %></p>
-      <p id="followers"><%= link_to "#{@user.followers.count} followers", followers_user_path(@user) %></p>
-      <div id="follow_form"><%= render 'users/follow_form' if logged_in? %></div>
+      <% if logged_in? %>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+        <p><%= @user.entries.count %> entries</p>
+        <p><%= link_to "#{@user.following.count} following", following_user_path(@user) %></p>
+        <p id="followers"><%= link_to "#{@user.followers.count} followers", followers_user_path(@user) %></p>
+        <div id="follow_form"><%= render 'users/follow_form' if logged_in? %></div>
+      <% end %>
     </div>
 
     <div class="col-md-9">

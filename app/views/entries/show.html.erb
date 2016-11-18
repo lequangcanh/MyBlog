@@ -1,3 +1,14 @@
 <h1><%= @entry.title %></h1>
 <h5><%= @entry.created_at %></h5>
 <p><%= @entry.content %></p>
+<h3>Comments</h3>
+<% if @comments.any? %>
+  <% @comments.each do |cmt| %>
+    <h5>Comment by: <%= cmt.user.name %>, at <%= cmt.created_at %></h5>
+    <p><%= cmt.content %></p>
+    <hr>
+  <% end %>
+  <%= will_paginate @comments %>
+<% else %>
+  <p>Become the first person comment for this entry</p>
+<% end %>

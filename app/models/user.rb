@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :entries, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :active_relationships, class_name: "Relationship",
                                   foreign_key: "follower_id",
                                   dependent: :destroy
@@ -11,6 +12,9 @@ class User < ApplicationRecord
 
   # before method
   before_save { email.downcase! }
+
+  # paginate
+  self.per_page = 10
 
   # Validates
   validates :name, presence: true, length: { maximum: 50 }
