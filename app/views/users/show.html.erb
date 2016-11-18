@@ -1,4 +1,16 @@
-<h1>
-<%= @user.name %>
-<%= gravatar_for @user %>
-</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= gravatar_for @user %>
+      <%= @user.name %>
+      <%= @user.entries.count %> entries
+    </div>
+
+    <div class="col-md-9">
+      <% @entries.each do |e| %>
+        <p><%= link_to e.title, entry_path(e) %></p>
+      <% end %>
+      <%= will_paginate @entries %>
+    </div>
+  </div>
+</div>

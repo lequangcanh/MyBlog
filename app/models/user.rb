@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :entries, dependent: :destroy
+
   # before method
   before_save { email.downcase! }
 
