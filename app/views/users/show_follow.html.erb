@@ -5,15 +5,15 @@
       <%= @user.name %>
       <p><%= @user.entries.count %> entries</p>
       <p><%= link_to "#{@user.following.count} following", following_user_path(@user) %></p>
-      <p id="followers"><%= link_to "#{@user.followers.count} followers", followers_user_path(@user) %></p>
-      <div id="follow_form"><%= render 'follow_form' if logged_in? %></div>
+      <p><%= link_to "#{@user.followers.count} followers", followers_user_path(@user) %></p>
+      <%= render 'follow_form' if logged_in? %>
     </div>
 
     <div class="col-md-9">
-      <% @entries.each do |e| %>
-        <p><%= link_to e.title, entry_path(e) %></p>
+      <% @users.each do |user| %>
+        <p><%= link_to user.name, user_path(user) %></p>
       <% end %>
-      <%= will_paginate @entries %>
+      <%= will_paginate @users %>
     </div>
   </div>
 </div>
