@@ -5,7 +5,7 @@ class EntriesController < ApplicationController
   def show
     @entry = Entry.find(params[:id])
     @comment = @entry.comments.build
-    @comments = @entry.comments.paginate(page: params[:page], per_page: 10)
+    @comments = @entry.comments.paginate(page: params[:page])
   end
 
   def create

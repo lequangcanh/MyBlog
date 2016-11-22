@@ -20,5 +20,50 @@
 }
 
 body {
-  padding-top: 60px;
+  background-image: url(background.jpg);
+}
+
+
+#userinfo {
+  border-radius: 25px;
+  background: url(paper.gif);
+  background-position: left top;
+  background-repeat: repeat;
+  padding: 20px; 
+  width: auto;
+  height: auto;    
+}
+
+#username {
+  font-size: 1.5em;
+  padding-bottom: 20px;
+  display: inline-block;
+}
+
+#form-entry {
+  width: 60%;
+  margin: auto;
+  padding-bottom: 50px;
+  textarea {
+    height: 100px;
+  };
+  .btn {
+    float: right;
+  }
+}
+
+#list-entries {
+  .entry-details {
+    border-radius: 20px;
+    width: auto;
+    height: auto;
+    border: solid 1px;
+    margin: 10px;
+    padding: 10px;
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 30px;
+  }
 }

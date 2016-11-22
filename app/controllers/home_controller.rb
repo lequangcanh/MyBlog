@@ -5,7 +5,7 @@ class HomeController < ApplicationController
       @entries = @user.feed.paginate(page: params[:page])
       @entry = current_user.entries.build
     else
-      @entries = Entry.paginate(page: params[:page])
+      @user = User.new
     end
   end
 
