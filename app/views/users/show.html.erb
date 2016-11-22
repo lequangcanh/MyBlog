@@ -12,6 +12,9 @@
     <div class="col-md-9">
       <% @entries.each do |e| %>
         <p><%= link_to e.title, entry_path(e) %></p>
+        <% if current_user?(e.user) %>
+          <%= link_to "Delete", e, method: :delete, data: { confirm: "You sure?" } %>
+        <% end %>
       <% end %>
       <%= will_paginate @entries %>
     </div>

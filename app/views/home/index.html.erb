@@ -12,6 +12,9 @@
     </div>
 
     <div class="col-md-9">
+      <% if logged_in? %>
+        <%= render 'form_entry' %>
+      <% end %>
       <% @entries.each do |e| %>
         <p><%= link_to e.title, entry_path(e) %></p>
       <% end %>

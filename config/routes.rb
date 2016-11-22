@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   delete 'signout', to: 'sessions#destroy'
 
   resources :entries, only: [:create, :destroy, :show]
+  resources :comments, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :users do
     member do
