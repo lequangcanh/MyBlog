@@ -24,6 +24,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    User.find(params[:id]).destroy
+    redirect_to request.referrer || root_url
+  end
+
   def following
     @user = User.find(params[:id])
     @users = @user.following.paginate(page: params[:page])

@@ -1,6 +1,7 @@
 # Create users
 User.create!(name:  "Le Quang Canh",
              email: "lequangcanh94@gmail.com",
+             admin: true,
              password:              "123456",
              password_confirmation: "123456")
 

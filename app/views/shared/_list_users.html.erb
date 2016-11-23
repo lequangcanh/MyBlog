@@ -2,6 +2,9 @@
   <% @users.each do |user| %>
     <%= gravatar_for user %>
     <%= link_to user.name, user_path(user) %>
+    <% if current_user.admin? && !current_user?(user) %>
+      <%= link_to content_tag(:span, '', class: "glyphicon glyphicon-trash"), user, method: :delete, data: { confirm: "You sure?" } %>
+    <% end %>
     <hr>
   <% end %>
   <%= will_paginate %>
