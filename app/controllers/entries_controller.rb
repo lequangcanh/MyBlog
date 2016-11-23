@@ -2,6 +2,10 @@ class EntriesController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user, only: :destroy
 
+  def index
+    @entries = Entry.paginate(page: params[:page])
+  end
+
   def show
     @entry = Entry.find(params[:id])
     @comment = @entry.comments.build
@@ -28,7 +32,7 @@ class EntriesController < ApplicationController
   end
 
   def correct_user
-    @entries = current_user.entries.find_by(id: params[:id])
-    return root_url if @entries.nil?
+    @entry = current_user.entries.find_by(id: params[:id])
+    return root_url if @entry.nil?
   end
 end

@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
+  before_action :user_can_comment, only: :create
   before_action :correct_user, only: :destroy
 
   def create
@@ -22,7 +23,12 @@ class CommentsController < ApplicationController
   end
 
   def correct_user
-    @comments = current_user.comments.find_by(id: params[:id])
-    return root_url if @comments.nil?
+    @comment = current_user.comments.find_by(id: params[:id])
+    return root_url if @comment.nil?
+  end
+
+  def user_can_comment
+    @entry = Entry.find_by(id: params[:comment][:entry_id]) 
+    return root_url if !current_user?(@entry.user) || !current_user.following?(@entry.user)
   end
 end

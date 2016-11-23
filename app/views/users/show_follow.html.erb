@@ -1,19 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
-      <%= gravatar_for @user %>
-      <%= @user.name %>
-      <p><%= @user.entries.count %> entries</p>
-      <p><%= link_to "#{@user.following.count} following", following_user_path(@user) %></p>
-      <p><%= link_to "#{@user.followers.count} followers", followers_user_path(@user) %></p>
-      <%= render 'follow_form' if logged_in? %>
+    <div class="col-md-4">
+      <%= render 'shared/user_info' %>
     </div>
 
-    <div class="col-md-9">
-      <% @users.each do |user| %>
-        <p><%= link_to user.name, user_path(user) %></p>
-      <% end %>
-      <%= will_paginate @users %>
+    <div class="col-md-8">
+      <%= render 'shared/list_users' %>
     </div>
   </div>
 </div>

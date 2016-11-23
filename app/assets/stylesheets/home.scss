@@ -61,9 +61,11 @@ body {
     margin: 10px;
     padding: 10px;
   }
-  .timestamp {
+}
+
+.timestamp {
     color: $gray-light;
     display: block;
     margin-left: 30px;
+    font-style: italic;
   }
-}

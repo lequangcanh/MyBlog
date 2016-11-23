@@ -1,22 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
-      <%= gravatar_for @user %>
-      <%= @user.name %>
-      <p><%= @user.entries.count %> entries</p>
-      <p><%= link_to "#{@user.following.count} following", following_user_path(@user) %></p>
-      <p id="followers"><%= link_to "#{@user.followers.count} followers", followers_user_path(@user) %></p>
-      <div id="follow_form"><%= render 'follow_form' if logged_in? %></div>
+    <div class="col-md-4">
+      <%= render 'shared/user_info' %>
     </div>
 
-    <div class="col-md-9">
-      <% @entries.each do |e| %>
-        <p><%= link_to e.title, entry_path(e) %></p>
-        <% if current_user?(e.user) %>
-          <%= link_to "Delete", e, method: :delete, data: { confirm: "You sure?" } %>
-        <% end %>
-      <% end %>
-      <%= will_paginate @entries %>
+    <div class="col-md-8">
+      <%= render 'shared/list_entries' %>
     </div>
   </div>
 </div>

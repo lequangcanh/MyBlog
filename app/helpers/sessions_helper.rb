@@ -24,7 +24,7 @@ module SessionsHelper
   def logged_in_user
     unless logged_in?
       session[:forwarding_url] = request.original_url if request.get?
-      redirect_to login_url
+      redirect_to signin_url
     end
   end
 end

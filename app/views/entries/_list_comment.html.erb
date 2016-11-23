@@ -1,0 +1,14 @@
+<% @comments.each do |cmt| %>
+  <h5>
+    <%= gravatar_for cmt.user, size: 30 %> <%= link_to cmt.user.name, user_path(cmt.user) %>
+  </h5>
+  <p class="timestamp">
+    Commented <%= time_ago_in_words(cmt.created_at) %> ago.
+    <% if current_user?(cmt.user) %>
+      <%= link_to content_tag(:span, '', class: "glyphicon glyphicon-trash"), cmt, method: :delete, data: { confirm: "You sure?" } %>
+    <% end %>
+  </p>
+  <p><%= cmt.content %></p>
+  <hr>
+<% end %>
+<%= will_paginate @comments %>
