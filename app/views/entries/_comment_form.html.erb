@@ -1,5 +1,5 @@
-<div id="comment-form">
-  <%= form_for(@comment) do |f| %>
+<div id="comment_form">
+  <%= form_for(@comment, remote: true) do |f| %>
     <div class="form-group">
       <%= f.text_area :content, class: "form-control", placeholder: "Your comment.....", required: true %>
       <%= f.hidden_field :entry_id, value: @entry.id, class: "form-control" %>

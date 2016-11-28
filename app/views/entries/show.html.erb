@@ -8,12 +8,14 @@
   <hr>
   <p><%= @entry.content %></p>
 </div>
-<h3>Comments</h3>
+<h3 id="comment_count"><%= @entry.comments.count %> Comments</h3>
 <% if logged_in? && (current_user?(@entry.user) || current_user.following?(@entry.user)) %>
   <%= render 'comment_form' %>
 <% end %>
 <% if @comments.any? %>
-  <%= render 'list_comment' %>
+  <div id="list_comments">
+    <%= render 'list_comment' %>
+  </div>
 <% else %>
   <p>Become the first person comment for this entry</p>
 <% end %>

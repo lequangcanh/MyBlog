@@ -5,7 +5,7 @@
   <p class="timestamp">
     Commented <%= time_ago_in_words(cmt.created_at) %> ago.
     <% if current_user?(cmt.user) %>
-      <%= link_to content_tag(:span, '', class: "glyphicon glyphicon-trash"), cmt, method: :delete, data: { confirm: "You sure?" } %>
+      <%= link_to content_tag(:span, '', class: "glyphicon glyphicon-trash"), cmt, method: :delete, data: { confirm: "You sure?" }, remote: true %>
     <% end %>
   </p>
   <p><%= cmt.content %></p>

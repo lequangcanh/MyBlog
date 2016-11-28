@@ -6,15 +6,22 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(comment_params)
     if @comment.save
-      redirect_to entry_path(@comment.entry)
+      @comments = @entry.comments.paginate(page: params[:page])
+      respond_to do |format|
+        format.js
+      end
     else
       redirect_to entry_path(@comment.entry)
     end
   end
 
   def destroy
-    Comment.find_by(id: params[:id]).destroy
-    redirect_to request.referrer || root_url
+    @comment.destroy
+    @comments = @comment.entry.comments.paginate(page: params[:page])
+    respond_to do |format|
+      format.js
+    end
+    #redirect_to request.referrer || root_url
   end
 
   private
