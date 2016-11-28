@@ -29,6 +29,6 @@ class CommentsController < ApplicationController
 
   def user_can_comment
     @entry = Entry.find_by(id: params[:comment][:entry_id]) 
-    return root_url if !current_user?(@entry.user) || !current_user.following?(@entry.user)
+    redirect_to root_url unless current_user?(@entry.user) || current_user.following?(@entry.user)
   end
 end
