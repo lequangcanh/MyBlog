@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
 
   def correct_user
     @comment = current_user.comments.find_by(id: params[:id])
-    return root_url if @comment.nil?
+    redirect_to root_url if @comment.nil?
   end
 
   def user_can_comment

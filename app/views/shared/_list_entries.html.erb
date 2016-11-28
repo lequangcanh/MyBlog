@@ -5,7 +5,7 @@
       <%= link_to e.user.name, user_path(e.user) %>
       <p class="timestamp">
         Posted <%= time_ago_in_words(e.created_at) %> ago.
-        <% if current_user?(e.user) || current_user.admin? %>
+        <% if logged_in? && (current_user?(e.user) || current_user.admin?) %>
           <%= link_to content_tag(:span, '', class: "glyphicon glyphicon-trash"), e, method: :delete, data: { confirm: "You sure?" } %>
         <% end %>
       </p>

@@ -9,7 +9,7 @@
   <p><%= @entry.content %></p>
 </div>
 <h3>Comments</h3>
-<% if current_user?(@entry.user) || current_user.following?(@entry.user) %>
+<% if logged_in? && (current_user?(@entry.user) || current_user.following?(@entry.user)) %>
   <%= render 'comment_form' %>
 <% end %>
 <% if @comments.any? %>
