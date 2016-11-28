@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
-  before_action :correct_user, only: :destroy
+  before_action :admin_or_author, only: :destroy
 
   def index
     @entries = Entry.paginate(page: params[:page])
@@ -31,8 +31,16 @@ class EntriesController < ApplicationController
     params.require(:entry).permit(:user_id, :title, :content)
   end
 
-  def correct_user
-    @entry = current_user.entries.find_by(id: params[:id])
-    return root_url if @entry.nil?
+  def author?
+    @entry = Entry.find_by(id: params[:id])
+    @entry.user == current_user
+  end
+
+  def admin_user?
+    current_user.admin?
+  end
+
+  def admin_or_author
+    redirect_to root_url unless admin_user? || author?
   end
 end
