@@ -4,7 +4,7 @@
     Post by: <%= gravatar_for @entry.user, size: 20 %>
     <%= link_to @entry.user.name, user_path(@entry.user) %>  
   </h5>
-  <h6 class="timestamp">at: <%= @entry.created_at %></h6>
+  <h6 class="timestamp">at: <%= @entry.created_at.localtime %></h6>
   <hr>
   <p><%= simple_format(@entry.content) %></p>
 </div>
