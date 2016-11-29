@@ -6,16 +6,16 @@
   </h5>
   <h6 class="timestamp">at: <%= @entry.created_at %></h6>
   <hr>
-  <p><%= @entry.content %></p>
+  <p><%= simple_format(@entry.content) %></p>
 </div>
 <h3 id="comment_count"><%= @entry.comments.count %> Comments</h3>
 <% if logged_in? && (current_user?(@entry.user) || current_user.following?(@entry.user)) %>
   <%= render 'comment_form' %>
 <% end %>
-<% if @comments.any? %>
-  <div id="list_comments">
+<div id="list_comments">
+  <% if @comments.any? %>
     <%= render 'list_comment' %>
-  </div>
-<% else %>
-  <p>Become the first person comment for this entry</p>
-<% end %>
+  <% else %>
+    <p>Become the first person comment for this entry</p>
+  <% end %>
+</div>

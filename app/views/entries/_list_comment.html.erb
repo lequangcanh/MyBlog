@@ -8,7 +8,7 @@
       <%= link_to content_tag(:span, '', class: "glyphicon glyphicon-trash"), cmt, method: :delete, data: { confirm: "You sure?" }, remote: true %>
     <% end %>
   </p>
-  <p><%= cmt.content %></p>
+  <p><%= simple_format(cmt.content) %></p>
   <hr>
 <% end %>
 <%= will_paginate @comments %>
